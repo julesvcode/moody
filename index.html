@@ -13,26 +13,34 @@
 <body>
     <header id="header">
         <div class="logo">
-            Logo
+            <img src="./assets/moody_logo.png" alt="moody - A minimal daily mood tracker" class="logo__img" width="100%">
         </div>
     </header>
     <main id="main">
         <div class="question">
-            How are you feeling today?
+            <h1 class="question__headline">How are you feeling today?</h1>
         </div>
         <div class="cards">
-            <div class="card" id="card-happy">Happy</div>
-            <div class="card" id="card-ok">Ok</div>
-            <div class="card" id="card-bad">Bad</div>
-            <div class="card" id="card-awful"Awful></div>
+            <div class="card" id="card-happy">
+                <img src="./assets/moods/illustration__happy.webp" alt="" width="100%">
+            </div>
+            <div class="card" id="card-ok">
+                <img src="./assets/moods/illustration__ok.webp" alt="" width="100%">
+            </div>
+            <div class="card" id="card-bad">
+                <img src="./assets/moods/illustration__bad.webp" alt="" width="100%">
+            </div>
+            <div class="card" id="card-awful">
+                <img src="./assets/moods/illustration__awful.webp" alt="" width="100%">
+            </div>
         </div>
         <div class="message">
-            Great! See you tomorrow..
+            <h3>Great! See you tomorrow..</h3>
         </div>
         <div class="analytics">
-            <div class="analytics__button">
+            <button class="analytics__button">
                 Check your stats
-            </div>
+            </button>
             <div class="analytics__results">
                 This week you've been feeling XXXX
             </div>
@@ -42,5 +50,6 @@
 
     </footer>
     
+    <script src="./app.js"></script>
 </body>
 </html>
