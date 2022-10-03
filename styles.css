@@ -54,7 +54,8 @@ main {
 
 .card:hover {
     outline: .3rem #333 solid;
-    animation: buttons .5s ease-in; 
+    animation: buttons .5s ease-in;
+    cursor: pointer;
 }
 
 .card.active {
