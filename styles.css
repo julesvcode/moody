@@ -67,9 +67,9 @@ main {
     opacity: .75;
 }
 
-.message {
+/* .message {
     visibility: hidden;
-}
+} */
 
 .analytics {
     text-align: center;
@@ -87,6 +87,48 @@ main {
 
 .analytics__results {
     display: none;
+}
+
+
+/* MODAL */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+  }
+  
+.modal-content {
+    background-color: #ffffff;
+    color: #333333;
+    margin: 40% auto;
+    padding: 20px;
+    border: .3rem solid #333;
+    border-radius: .5rem;
+    box-shadow: 2px 2px 7px #7d7d7d;
+    width: 80%;
+    min-height: 25vh;
+}
+
+.close {
+    color: #333333;
+    float: right;
+    font-size: 28px;
+}
+
+.close:hover, .close:focus {
+    opacity: .75;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.close.button {
+    margin: 1rem;
 }
 
 

@@ -5,45 +5,77 @@
 const cards = document.getElementsByClassName("card");
 const activeCard = document.getElementsByClassName("active");
 
-const messageHappy = "Nice one!";
-// To do: create a custom message for each mood
+const modal = document.getElementById("alertModal");
+const modalClose = document.getElementsByClassName("close")[0];
+
+// Mood cards
+const moodHappy = document.getElementById("card-happy");
+const moodOk = document.getElementById("card-ok");
+const moodBad = document.getElementById("card-bad");
+const moodAwful = document.getElementById("card-awful");
+
+// Mood messages
 const message = document.querySelector(".message h3");
+const messageHappy = "Nice one!";
+const messageOk = "Alright!";
+const messageBad = "We all have days like this!";
+const messageAwful = "Noted!";
 
 
-let moodAverage = 0;
+// Mood Scores
+let moodScore = 0;
+let moodPicks = 0;
 const scoreHappy = 4;
 const scoreOk = 3;
 const scoreBad = 2;
 const scoreAwful = 1;
 // To do: average counter to calculate mood score
 
-console.log(moodAverage);
+let savedMoodScore = localStorage.getItem("storedMoodScore");
+let savedMoodPicks = localStorage.getItem("storedMoodPicks");
+
+if(savedMoodScore) {
+    moodScore = savedMoodScore;
+    moodPicks = savedMoodPicks;
+} 
+
+
 for (let i = 0; i < cards.length; i++) {
     cards[i].addEventListener("click", function () {
         if (activeCard.length === 0) {
             cards[i].classList.add("active");
+            localStorage.setItem("storedMoodPicks", Number(moodPicks) + 1);
             if (cards[i].querySelector("#card-happy")) {
-                message.textContent = `${messageHappy} See you tomorrow!`; 
-                message.style.visibility = "visible";
-                moodAverage = moodAverage + scoreHappy;
-                console.log(moodAverage);
-                // > Display customised message
-                // > Add score depending on mood
-                // > Save score to local storage
+                message.textContent = `${messageHappy} See you tomorrow.`; 
+                localStorage.setItem("storedMoodScore", Number(moodScore) + Number(scoreHappy));
             } else if (cards[i].querySelector("#card-ok")) {
-                message.textContent = "Nice one! See you tomorrow!";
-                message.style.visibility = "visible";
-            } else {
-                alert("Not done yet!");
+                message.textContent = `${messageOk} See you tomorrow.`; 
+                localStorage.setItem("storedMoodScore", Number(moodScore) + Number(scoreOk));
+            } else if (cards[i].querySelector("#card-bad")) {
+                message.textContent = `${messageBad} See you tomorrow.`; 
+                localStorage.setItem("storedMoodScore", Number(moodScore) + Number(scoreBad));
+            } else if (cards[i].querySelector("#card-awful")) {
+                message.textContent = `${messageAwful} See you tomorrow.`; 
+                localStorage.setItem("storedMoodScore", Number(moodScore) + Number(scoreAwful));
             }
-            
         } else {
-            alert("You've already picked a mood for today! Come back tomorrow");
-            // To do: create a modal to show instead of Alert
+            modal.style.display = "block";
         }
     });
 };
 
+
+// Close modal
+
+modalClose.addEventListener("click", function () {
+    modal.style.display = "none";
+});
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
 
 
 
