@@ -14,6 +14,10 @@ const moodOk = document.getElementById("card-ok");
 const moodBad = document.getElementById("card-bad");
 const moodAwful = document.getElementById("card-awful");
 
+// List of mood cards
+let cardsList = document.getElementsByClassName("cards")[0];
+
+
 // Change background on hover
 // moodHappy.addEventListener("mouseover", function () {
 //     document.body.style.backgroundColor = "#C9EDFE";
@@ -50,28 +54,32 @@ const scoreAwful = 1;
 
 // Date
 let date = new Date();
-let currentDate;
 let todayDate = date.getMinutes();
 
 let savedMoodScore = localStorage.getItem("storedMoodScore");
 let savedMoodPicks = localStorage.getItem("storedMoodPicks");
 let savedDate = localStorage.getItem("storedDate");
+let savedMood = localStorage.getItem("storedMood");
 
 if(savedMoodScore) {
     moodScore = savedMoodScore;
     moodPicks = savedMoodPicks;
-    currentDate = savedDate;
 } 
 
-console.log(currentDate)
-console.log(todayDate)
+// Updates the cards on load if mood picked on previous day
+if (savedMood && todayDate === Number(savedDate)) {
+    cardsList.innerHTML = savedMood;
+} 
+
+
+
 
 for (let i = 0; i < cards.length; i++) {
     cards[i].addEventListener("click", function () {
         if (activeCard.length === 0) {
             cards[i].classList.add("active");
             localStorage.setItem("storedMoodPicks", Number(moodPicks) + 1);
-            localStorage.setItem("storedDate", date.getMinutes());
+            localStorage.setItem("storedDate", Number(date.getMinutes()));
             if (cards[i].querySelector("#card-happy")) {
                 message.textContent = `${messageHappy} See you tomorrow.`; 
                 localStorage.setItem("storedMoodScore", Number(moodScore) + Number(scoreHappy));
@@ -88,6 +96,9 @@ for (let i = 0; i < cards.length; i++) {
         } else {
             modal.style.display = "block";
         }
+        // Checks which mood was picked and save it to localStorage
+        let selectedMood = document.getElementsByClassName("cards")[0].innerHTML;
+        localStorage.setItem("storedMood", selectedMood);
     });
 };
 
