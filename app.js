@@ -14,6 +14,23 @@ const moodOk = document.getElementById("card-ok");
 const moodBad = document.getElementById("card-bad");
 const moodAwful = document.getElementById("card-awful");
 
+// Change background on hover
+// moodHappy.addEventListener("mouseover", function () {
+//     document.body.style.backgroundColor = "#C9EDFE";
+// });
+
+// moodOk.addEventListener("mouseover", function () {
+//     document.body.style.backgroundColor = "#FFFFFF";
+// });
+
+// moodBad.addEventListener("mouseover", function () {
+//     document.body.style.backgroundColor = "#F5F5F5";
+// });
+
+// moodAwful.addEventListener("mouseover", function () {
+//     document.body.style.backgroundColor = "#FF874F";
+// });
+
 // Mood messages
 const message = document.querySelector(".message h3");
 const messageHappy = "Nice one!";
@@ -31,20 +48,30 @@ const scoreBad = 2;
 const scoreAwful = 1;
 // To do: average counter to calculate mood score
 
+// Date
+let date = new Date();
+let currentDate;
+let todayDate = date.getMinutes();
+
 let savedMoodScore = localStorage.getItem("storedMoodScore");
 let savedMoodPicks = localStorage.getItem("storedMoodPicks");
+let savedDate = localStorage.getItem("storedDate");
 
 if(savedMoodScore) {
     moodScore = savedMoodScore;
     moodPicks = savedMoodPicks;
+    currentDate = savedDate;
 } 
 
+console.log(currentDate)
+console.log(todayDate)
 
 for (let i = 0; i < cards.length; i++) {
     cards[i].addEventListener("click", function () {
         if (activeCard.length === 0) {
             cards[i].classList.add("active");
             localStorage.setItem("storedMoodPicks", Number(moodPicks) + 1);
+            localStorage.setItem("storedDate", date.getMinutes());
             if (cards[i].querySelector("#card-happy")) {
                 message.textContent = `${messageHappy} See you tomorrow.`; 
                 localStorage.setItem("storedMoodScore", Number(moodScore) + Number(scoreHappy));
