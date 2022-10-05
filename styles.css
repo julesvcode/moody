@@ -35,41 +35,38 @@ main {
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    animation: cards .5s ease-in; 
+    animation: cards .5s ease-in;
 }
 
 .card {
     flex: 45%;
-    margin: .4rem .4rem;
-    background-color: #333333;
+    margin: .5rem .5rem;
     border-radius: .5rem;
-    box-shadow: 2px 2px 7px #7d7d7d;
 }
 
 .card img {
-    display: block;
-    padding: .3rem;
+    position: relative;
     border-radius: .5rem;
+    border: .2rem solid #333;
+    box-shadow: 0 .4rem 0 #333333;
+    top: 0px;
+    transition: All 250ms ease;
 }
 
-.card:hover {
-    outline: .3rem #333 solid;
-    animation: buttons .5s ease-in;
+.card img:hover {
+    position: relative;
     cursor: pointer;
+    top: .4rem;
+    box-shadow: 0 0 0 #333333;
 }
 
-.card.active {
-    outline: .3rem #333 solid;
-    background-color: rgba(51, 51, 51, .75);
+.card.active img {
+    opacity: .6;
+    top: .4rem;
+    box-shadow: 0 0 0 #333333;
+    transition: All 250ms ease;
 }
 
-.card.active > img {
-    opacity: .75;
-}
-
-/* .message {
-    visibility: hidden;
-} */
 
 .analytics {
     text-align: center;
@@ -77,12 +74,23 @@ main {
 }
 
 .analytics__button {
+    position: relative;
     padding: .75rem 1.5rem;
-    background-color: #333333;
-    color: #ffffff;
+    background-color: #ffffff;
+    color: #333333;
     font-weight: bold;
-    border: .25rem solid #333333;
+    border: .2rem solid #333333;
+    top: 0;
     border-radius: .5rem;
+    box-shadow: 0 .4rem 0 #333333;
+}
+
+.analytics__button:hover {
+    position: relative;
+    top: .4rem;
+    box-shadow: 0 0 0 #333333;
+    transition: All 250ms ease;
+    cursor: pointer;
 }
 
 .analytics__results {
@@ -100,7 +108,7 @@ main {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0,0,0,0.6);
   }
   
 .modal-content {
@@ -108,9 +116,9 @@ main {
     color: #333333;
     margin: 40% auto;
     padding: 20px;
-    border: .3rem solid #333;
+    border: .2rem solid #333;
     border-radius: .5rem;
-    box-shadow: 2px 2px 7px #7d7d7d;
+    box-shadow: 2px 2px 7px #333333;
     width: 80%;
     min-height: 25vh;
 }
@@ -143,14 +151,3 @@ main {
     }
 }
 
-@keyframes buttons {
-    0% {
-        outline: 0rem #333 solid;
-    }
-    50% {
-        outline: .5rem #333 solid;
-    }
-    75% {
-        outline: .3rem #333 solid;
-    }
-}

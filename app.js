@@ -72,8 +72,6 @@ if (savedMood && todayDate === Number(savedDate)) {
 } 
 
 
-
-
 for (let i = 0; i < cards.length; i++) {
     cards[i].addEventListener("click", function () {
         if (activeCard.length === 0) {
