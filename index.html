@@ -46,7 +46,7 @@
             <h3>  </h3>
         </div>
         <div class="analytics">
-            <button class="analytics__button">
+            <button class="analytics__button" id="stats__button">
                 Check your stats
             </button>
             <div class="analytics__results">
@@ -58,14 +58,34 @@
 
     </footer>
 
+    <!-- ALERT MODAL -->
     <div id="alertModal" class="modal">
         <div class="modal-content">
-            <span class="close">&times;</span>
-            <p>You've already picked a mood for today!</p>
-            <br>
-            <p>Come back tomorrow</p>
+            <div class="modal-header">
+                <img src="./assets/clouds/happy_cloud_transparent.png" alt="" class="modal-header_image" width="100%">
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <h3>You've already picked a mood for today!</h3>
+                <br>
+                <h3>Come back tomorrow!</h3>
+            </div>
         </div>
-        
+    </div>
+
+    <!-- STATS MODAL -->
+    <div id="statsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img src="" alt="" class="modal-header_image" id="stats__image" width="100%">
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <h3>Lately, <br>you've been feeling...</h3>
+                <br>
+                <h3 id="stats__text"></h3>
+            </div>
+        </div>
     </div>
     
     <script src="./app.js"></script>

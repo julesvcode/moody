@@ -4,9 +4,14 @@
 
 const cards = document.getElementsByClassName("card");
 const activeCard = document.getElementsByClassName("active");
+const statsButton = document.getElementById("stats__button");
 
-const modal = document.getElementById("alertModal");
-const modalClose = document.getElementsByClassName("close")[0];
+// Modals
+const modalMood = document.getElementById("alertModal");
+const modalStats = document.getElementById("statsModal");
+const modalMoodClose = document.getElementsByClassName("close")[0];
+const modalStatsClose = document.getElementsByClassName("close")[1];
+
 
 // Mood cards
 const moodHappy = document.getElementById("card-happy");
@@ -56,6 +61,8 @@ const scoreAwful = 1;
 let date = new Date();
 let todayDate = date.getMinutes();
 
+
+// Local storage
 let savedMoodScore = localStorage.getItem("storedMoodScore");
 let savedMoodPicks = localStorage.getItem("storedMoodPicks");
 let savedDate = localStorage.getItem("storedDate");
@@ -92,7 +99,7 @@ for (let i = 0; i < cards.length; i++) {
                 localStorage.setItem("storedMoodScore", Number(moodScore) + Number(scoreAwful));
             }
         } else {
-            modal.style.display = "block";
+            modalMood.style.display = "flex";
         }
         // Checks which mood was picked and save it to localStorage
         let selectedMood = document.getElementsByClassName("cards")[0].innerHTML;
@@ -101,15 +108,58 @@ for (let i = 0; i < cards.length; i++) {
 };
 
 
-// Close modal
+// Mood stats
 
-modalClose.addEventListener("click", function () {
-    modal.style.display = "none";
+let stats;
+const statsImage = document.getElementById("stats__image");
+const statsText = document.getElementById("stats__text");
+
+
+function currentStats () {
+    const currentMoodScore = localStorage.getItem("storedMoodScore");
+    const currentMoodPicks = localStorage.getItem("storedMoodPicks");
+    console.log(currentMoodPicks);
+    console.log(currentMoodScore);
+
+    stats = Math.round(currentMoodScore / currentMoodPicks);
+}
+
+// Stats Modal
+statsButton.addEventListener("click", function () {
+    modalStats.style.display = "flex";
+    currentStats();
+    console.log(stats);
+    if (stats === 4) {
+        statsImage.src = "./assets/clouds/happy_cloud_transparent.png";
+        statsText.textContent = "Fantastic!";
+    } else if (stats === 3) {
+        statsImage.src = "./assets/clouds/ok_cloud_transparent.png";
+        statsText.textContent = "Alright..";
+    } else if (stats === 2) {
+        statsImage.src = "./assets/clouds/bad_cloud_transparent.png";
+        statsText.textContent = "Not great..";
+    } else {
+        statsImage.src = "./assets/clouds/awful_cloud_transparent.png";
+        statsText.textContent = "Awful :(";
+    }
+});
+
+modalStatsClose.addEventListener("click", function () {
+    modalStats.style.display = "none";
+});
+
+
+// Mood modal
+
+modalMoodClose.addEventListener("click", function () {
+    modalMood.style.display = "none";
 });
 
 window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
+    if (event.target == modalMood) {
+        modalMood.style.display = "none";
+    } else if (event.target == modalStats) {
+        modalStats.style.display = "none";
     }
 }
 
