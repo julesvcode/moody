@@ -174,6 +174,43 @@ main {
     text-align: left;
 }
 
+/* FOOTER */
+
+footer {
+    width: 100%;
+    bottom: 0;
+    height: 2rem;
+    background-color: #333;
+    display: flex;
+}
+
+.left {
+    flex: 1;
+    background-color: #fff;
+    border-radius: 0 0 20px 0;
+}
+
+.middle {
+    flex: 1;
+    background-color: #fff;
+}
+
+.middle-2 {
+    border-radius: 20px 20px 0 0;
+    background-color: #333;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+
+.right {
+    flex: 1;
+    background-color: #fff;
+    border-radius: 0 0 0 20px;
+}
+
 @keyframes cards {
     0% {
         opacity: 0;
