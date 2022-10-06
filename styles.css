@@ -163,10 +163,16 @@ main {
     cursor: pointer;
 }
 
-.close.button {
-    /* margin: 1rem; */
-}
+/* About Modal */
 
+/* #aboutModal {
+    display: flex;
+    
+} */
+
+#aboutModal .modal-body {
+    text-align: left;
+}
 
 @keyframes cards {
     0% {
