@@ -10,14 +10,27 @@ body {
     color: #333333;
 }
 
+/* --- HEADER --- */
+
 header {
     padding: 2rem 2rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.logo {
-    max-width: 8rem;
+.header__logo {
+    max-width: 10rem;
     margin: 0 auto;
 }
+
+.header-icon {
+    width: 1.75rem;
+    height: 1.75rem;
+    cursor: pointer;
+}
+
+/* --- MAIN --- */
 
 main {
     margin: 2rem 1.5rem;
@@ -28,6 +41,8 @@ main {
     max-width: 75%;
     margin: 0 auto 1rem;
 }
+
+/* --- CARDS --- */
 
 .cards {
     margin: 2rem 0;
@@ -68,6 +83,8 @@ main {
 }
 
 
+/* --- ANALYTICS SECTION --- */
+
 .analytics {
     text-align: center;
     margin: 1rem 1rem;
@@ -79,6 +96,7 @@ main {
     background-color: #ffffff;
     color: #333333;
     font-weight: bold;
+    font-size: 1.25rem;
     border: .2rem solid #333333;
     top: 0;
     border-radius: .5rem;
@@ -98,7 +116,7 @@ main {
 }
 
 
-/* MODAL */
+/* --- MODALS --- */
 
 .modal {
     display: none;
@@ -112,6 +130,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    animation: modals 200ms ease-in;
 }
 
   
@@ -163,31 +182,34 @@ main {
     cursor: pointer;
 }
 
-/* About Modal */
-
-/* #aboutModal {
-    display: flex;
-    
-} */
-
 #aboutModal .modal-body {
     text-align: left;
 }
 
-/* FOOTER */
+/* --- FOOTER --- */
 
 footer {
     width: 100%;
-    bottom: 0;
-    height: 2rem;
-    background-color: #333;
     display: flex;
+    align-items: flex-end;
+}
+
+.footer {
+    background-color: #333; 
+    position: relative;
+    display: flex;
+    width: 100%;
+}
+
+footer a {
+    color: #ffffff;
+    text-decoration: none;
 }
 
 .left {
     flex: 1;
     background-color: #fff;
-    border-radius: 0 0 20px 0;
+    border-radius: 0 0 15px 0;
 }
 
 .middle {
@@ -196,9 +218,11 @@ footer {
 }
 
 .middle-2 {
-    border-radius: 20px 20px 0 0;
+    border-radius: 15px 15px 0 0;
     background-color: #333;
     height: 100%;
+    padding: .5rem 0;
+    font-size: .8rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -208,8 +232,40 @@ footer {
 .right {
     flex: 1;
     background-color: #fff;
-    border-radius: 0 0 0 20px;
+    border-radius: 0 0 0 15px;
 }
+
+/* --- MEDIA QUERIES --- */
+
+@media only screen and (min-width: 720px) {
+    header, footer {
+        height: 10vh;
+    }
+
+    main {
+        max-width: 720px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 80vh;
+    }
+
+    .cards {
+        flex-wrap: nowrap;
+    }
+
+    .card {
+        flex: 25%;
+    }
+
+    .modal-content {
+        max-width: 640px;
+    }
+
+}
+
+/* --- ANIMATIONS --- */
 
 @keyframes cards {
     0% {
@@ -219,6 +275,15 @@ footer {
     100% {
         opacity: 1;
         transform: translateY(0px);
+    }
+}
+
+@keyframes modals {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
     }
 }
 

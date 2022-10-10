@@ -1,16 +1,17 @@
-
-
-// 1. Toggle active class after clicking on one of the images. Can't click on more than 1 mood.
-
+// Main variables 
 const cards = document.getElementsByClassName("card");
 const activeCard = document.getElementsByClassName("active");
 const statsButton = document.getElementById("stats__button");
+const statsButtonHeader = document.getElementById("stats-icon");
+const aboutButtonHeader = document.getElementById("about-icon");
 
 // Modals
 const modalMood = document.getElementById("alertModal");
 const modalStats = document.getElementById("statsModal");
+const modalAbout = document.getElementById("aboutModal");
 const modalMoodClose = document.getElementsByClassName("close")[0];
 const modalStatsClose = document.getElementsByClassName("close")[1];
+const modalAboutClose = document.getElementsByClassName("close")[2];
 
 
 // Mood cards
@@ -116,19 +117,16 @@ const statsText = document.getElementById("stats__text");
 
 
 function currentStats () {
+    // Grab latest stats
     const currentMoodScore = localStorage.getItem("storedMoodScore");
     const currentMoodPicks = localStorage.getItem("storedMoodPicks");
     console.log(currentMoodPicks);
     console.log(currentMoodScore);
 
+    // Calculate average from latest stats
     stats = Math.round(currentMoodScore / currentMoodPicks);
-}
 
-// Stats Modal
-statsButton.addEventListener("click", function () {
-    modalStats.style.display = "flex";
-    currentStats();
-    console.log(stats);
+    // Update content of modal according to average
     if (stats === 4) {
         statsImage.src = "./assets/clouds/happy_cloud_transparent.png";
         statsText.textContent = "Fantastic!";
@@ -142,6 +140,18 @@ statsButton.addEventListener("click", function () {
         statsImage.src = "./assets/clouds/awful_cloud_transparent.png";
         statsText.textContent = "Awful :(";
     }
+}
+
+// Stats Modal
+statsButton.addEventListener("click", function () {
+    modalStats.style.display = "flex";
+    currentStats();
+    console.log(stats);
+});
+
+statsButtonHeader.addEventListener("click", function () {
+    modalStats.style.display = "flex";
+    currentStats();
 });
 
 modalStatsClose.addEventListener("click", function () {
@@ -150,16 +160,30 @@ modalStatsClose.addEventListener("click", function () {
 
 
 // Mood modal
-
 modalMoodClose.addEventListener("click", function () {
     modalMood.style.display = "none";
 });
 
+
+
+// About modal 
+aboutButtonHeader.addEventListener("click", function () {
+    modalAbout.style.display = "flex";
+});
+
+modalAboutClose.addEventListener("click", function () {
+    modalAbout.style.display = "none";
+});
+
+
+// Close all modals by clicking anywhere 
 window.onclick = function(event) {
     if (event.target == modalMood) {
         modalMood.style.display = "none";
     } else if (event.target == modalStats) {
         modalStats.style.display = "none";
+    } else if (event.target == modalAbout) {
+        modalAbout.style.display = "none";
     }
 }
 
