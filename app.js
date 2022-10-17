@@ -56,11 +56,11 @@ const scoreHappy = 4;
 const scoreOk = 3;
 const scoreBad = 2;
 const scoreAwful = 1;
-// To do: average counter to calculate mood score
 
 // Date
 let date = new Date();
-let todayDate = date.getMinutes();
+let todayDate = date.getDate();
+console.log("Today is the " + todayDate)
 
 
 // Local storage
