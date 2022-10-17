@@ -120,24 +120,24 @@ function currentStats () {
     // Grab latest stats
     const currentMoodScore = localStorage.getItem("storedMoodScore");
     const currentMoodPicks = localStorage.getItem("storedMoodPicks");
-    console.log(currentMoodPicks);
-    console.log(currentMoodScore);
+    console.log("Mood picks: " + currentMoodPicks);
+    console.log("Mood score: " + currentMoodScore);
 
     // Calculate average from latest stats
     stats = Math.round(currentMoodScore / currentMoodPicks);
 
     // Update content of modal according to average
     if (stats === 4) {
-        statsImage.src = "./assets/clouds/happy_cloud_transparent.png";
+        statsImage.src = "./assets/clouds/happy_cloud_transparent.webp";
         statsText.textContent = "Fantastic!";
     } else if (stats === 3) {
-        statsImage.src = "./assets/clouds/ok_cloud_transparent.png";
+        statsImage.src = "./assets/clouds/ok_cloud_transparent.webp";
         statsText.textContent = "Alright..";
     } else if (stats === 2) {
-        statsImage.src = "./assets/clouds/bad_cloud_transparent.png";
+        statsImage.src = "./assets/clouds/bad_cloud_transparent.webp";
         statsText.textContent = "Not great..";
     } else {
-        statsImage.src = "./assets/clouds/awful_cloud_transparent.png";
+        statsImage.src = "./assets/clouds/awful_cloud_transparent.webp";
         statsText.textContent = "Awful :(";
     }
 }
@@ -146,7 +146,7 @@ function currentStats () {
 statsButton.addEventListener("click", function () {
     modalStats.style.display = "flex";
     currentStats();
-    console.log(stats);
+    console.log("Average: " + stats);
 });
 
 statsButtonHeader.addEventListener("click", function () {
