@@ -85,7 +85,7 @@ for (let i = 0; i < cards.length; i++) {
         if (activeCard.length === 0) {
             cards[i].classList.add("active");
             localStorage.setItem("storedMoodPicks", Number(moodPicks) + 1);
-            localStorage.setItem("storedDate", Number(date.getMinutes()));
+            localStorage.setItem("storedDate", Number(date.getDate()));
             if (cards[i].querySelector("#card-happy")) {
                 message.textContent = `${messageHappy} See you tomorrow.`; 
                 localStorage.setItem("storedMoodScore", Number(moodScore) + Number(scoreHappy));
