@@ -114,6 +114,7 @@ for (let i = 0; i < cards.length; i++) {
 let stats;
 const statsImage = document.getElementById("stats__image");
 const statsText = document.getElementById("stats__text");
+const statsIntro = document.getElementById("stats__intro");
 
 
 function currentStats () {
@@ -136,9 +137,12 @@ function currentStats () {
     } else if (stats === 2) {
         statsImage.src = "./assets/clouds/bad_cloud_transparent.webp";
         statsText.textContent = "Not great..";
-    } else {
+    } else if (stats === 1) {
         statsImage.src = "./assets/clouds/awful_cloud_transparent.webp";
         statsText.textContent = "Awful :(";
+    } else {
+        statsImage.src = "./assets/clouds/happy_cloud_transparent.webp";
+        statsIntro.innerHTML = "It looks like it's your first time here so we don't have any stats to show you yet!<br><br>Close this pop-up and log your mood over the coming days. Then come back to check your stats!";
     }
 }
 
