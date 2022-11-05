@@ -115,6 +115,7 @@ let stats;
 const statsImage = document.getElementById("stats__image");
 const statsText = document.getElementById("stats__text");
 const statsIntro = document.getElementById("stats__intro");
+const statsLogs = document.getElementById("stats__logs");
 
 
 function currentStats () {
@@ -130,15 +131,19 @@ function currentStats () {
     // Update content of modal according to average
     if (stats === 4) {
         statsImage.src = "./assets/clouds/happy_cloud_transparent.webp";
+        statsIntro.innerHTML = `Lately, <br>you've been feeling...`;
         statsText.textContent = "Fantastic!";
     } else if (stats === 3) {
         statsImage.src = "./assets/clouds/ok_cloud_transparent.webp";
+        statsIntro.innerHTML = `Lately, <br>you've been feeling...`;
         statsText.textContent = "Alright..";
     } else if (stats === 2) {
         statsImage.src = "./assets/clouds/bad_cloud_transparent.webp";
+        statsIntro.innerHTML = `Lately, <br>you've been feeling...`;
         statsText.textContent = "Not great..";
     } else if (stats === 1) {
         statsImage.src = "./assets/clouds/awful_cloud_transparent.webp";
+        statsIntro.innerHTML = `Lately, <br>you've been feeling...`;
         statsText.textContent = "Awful :(";
     } else {
         statsImage.src = "./assets/clouds/happy_cloud_transparent.webp";
@@ -146,16 +151,30 @@ function currentStats () {
     }
 }
 
+function currentLogs() {
+    const currentMoodPicks = localStorage.getItem("storedMoodPicks");
+
+    if (currentMoodPicks == 1) {
+        statsLogs.textContent = `You've logged your mood ${currentMoodPicks} time`;
+    } else if (currentMoodPicks > 1) {
+        statsLogs.textContent = `You've logged your mood ${currentMoodPicks} times`;
+    } else {
+        statsLogs.textContent = "";
+    }
+}
+
 // Stats Modal
 statsButton.addEventListener("click", function () {
     modalStats.style.display = "flex";
     currentStats();
+    currentLogs();
     console.log("Average: " + stats);
 });
 
 statsButtonHeader.addEventListener("click", function () {
     modalStats.style.display = "flex";
     currentStats();
+    currentLogs();
 });
 
 modalStatsClose.addEventListener("click", function () {
