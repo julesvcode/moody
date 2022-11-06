@@ -195,7 +195,7 @@ main {
     color: #333333;
 }
 
-.modal p {
+#stats__logs {
     color: #333333;
     font-size: .75rem;
     font-weight: bold;

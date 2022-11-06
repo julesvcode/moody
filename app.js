@@ -60,7 +60,6 @@ const scoreAwful = 1;
 // Date
 let date = new Date();
 let todayDate = date.getDate();
-console.log("Today is the " + todayDate)
 
 
 // Local storage
@@ -122,8 +121,6 @@ function currentStats () {
     // Grab latest stats
     const currentMoodScore = localStorage.getItem("storedMoodScore");
     const currentMoodPicks = localStorage.getItem("storedMoodPicks");
-    console.log("Mood picks: " + currentMoodPicks);
-    console.log("Mood score: " + currentMoodScore);
 
     // Calculate average from latest stats
     stats = Math.round(currentMoodScore / currentMoodPicks);
@@ -168,7 +165,6 @@ statsButton.addEventListener("click", function () {
     modalStats.style.display = "flex";
     currentStats();
     currentLogs();
-    console.log("Average: " + stats);
 });
 
 statsButtonHeader.addEventListener("click", function () {
